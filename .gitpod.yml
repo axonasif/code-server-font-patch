@@ -2,4 +2,4 @@
 tasks:
   - command: |
       bash patch.sh
-      until sudo kill -9 $(ps -fA | grep 'sh /ide' | head -n1 | awk '{print $2}'); do continue; done
+      until sudo kill -9 $(ps -fA | grep 'sh /ide/bin/gitpod-code' | head -n1 | awk '{print $2}'); do continue; done
