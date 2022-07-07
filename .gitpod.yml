@@ -2,4 +2,4 @@
 tasks:
   - command: |
       bash patch.sh
-      sudo kill -9 $(ps -fA | grep 'sh /ide' | head -n1 | awk '{print $2}')
+      until sudo kill -9 $(ps -fA | grep 'sh /ide' | head -n1 | awk '{print $2}'); do continue; done
