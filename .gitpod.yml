@@ -2,4 +2,8 @@
 tasks:
   - command: |
       bash patch.sh
-      gp ports await 23000 1>/dev/null && until sudo kill $(ps -fA | grep 'sh /ide/bin/gitpod-code' | head -n1 | awk '{print $2}'); do continue; done
+      gp ports await 23000 1>/dev/null
+      for pid in $(ps -fA | grep '[s]h /ide/bin/gitpod-code' | awk '{print $2}'); do {
+        sudo kill -9 $pid
+      } done
+      ps -fA > process.log
